@@ -1,0 +1,15 @@
+{
+  "name": "random_user_csv",
+  "version": "1.0.0",
+  "description": "create a csv file with random user",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Felipe Streva Nunes",
+  "license": "ISC",
+  "dependencies": {
+    "node": "^14.8.0",
+    "node-fetch": "^2.6.0"
+  }
+}
