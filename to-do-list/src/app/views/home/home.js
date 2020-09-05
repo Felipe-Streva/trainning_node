@@ -1,6 +1,5 @@
-const todos = require('../../controller/home/home')
 
-function createHome(todos) {
+function createHome(name, todos) {
 
 
     return `<!DOCTYPE html>
@@ -30,7 +29,8 @@ function createHome(todos) {
                             </form>
                         </div>
                     </div>
-                    <div id="todoCard">
+                    ${name}
+                    <div id="todoCard" class="d-flex mt-5 justify-content-around flex-wrap">
                         <!-- Aqui entram os cards de TODO!-->
                         ${todos}
                     </div>
@@ -41,4 +41,4 @@ function createHome(todos) {
                 </html>`;
     }
 
-module.exports = createHome(todos);
+module.exports = createHome;

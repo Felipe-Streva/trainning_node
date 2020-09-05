@@ -1,10 +1,14 @@
-const createHome = require('../views/home/home')
+
+const generateHome = require('../controller/home/home')
+
 
 module.exports = (app) => {
 
-    app.get('/', (req, resp) => {
+    app.get(`/:id`, (req, resp) => {
 
-        resp.send(createHome)
+        const userId = req.params.id
+        
+        resp.send(generateHome(userId))
     })
 
 }
