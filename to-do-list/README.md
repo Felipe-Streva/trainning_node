@@ -18,5 +18,5 @@ npm init
 npm install express
 
 # execute code
-node server.js
+node ./src/server.js
 ```
