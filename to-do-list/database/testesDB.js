@@ -13,9 +13,9 @@ const db = new sqlite3.Database('./database/todo.db')
 //insert Todo
 /* db.serialize(()=>{
     const statement = db.prepare("INSERT into `Todo` (user_id, title, description, `type`, important_id, status_id) Values (?, ?, ?, ?, ?, ?)");
-    statement.run(1, 'Yoga', 'Fazer Yoga', 1, 1, 1)
+    statement.run(1, 'Estudar Node', 'Estudar SQLite o dia todo', 1, 1, 1)
     statement.finalize()
-})  */
+})   */
 
 //INSERT status
 /* db.serialize(()=>{

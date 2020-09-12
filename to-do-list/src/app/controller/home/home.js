@@ -1,9 +1,18 @@
-const generateUser = require('../../models/home/home')
+const todoListToHTML = require('../../views/home/creatCards');
+const HomeModels = require('../../models/home/home')
 
-function generateHome(userId){
-    const idToPositionInArray = userId - 1;
-    return generateUser(idToPositionInArray)
+const homeModels = new HomeModels()
+
+
+class HomeController {
+    
+    static generateHome(){
+        return ((req, resp) => homeModels.formatJSON(req.params.id)
+            .then((userCard)=>{
+                resp.send(todoListToHTML(userCard))
+        }))
+    }
 }
 
 
-module.exports = generateHome;
+module.exports = HomeController;
