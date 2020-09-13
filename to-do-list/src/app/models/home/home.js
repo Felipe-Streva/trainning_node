@@ -13,15 +13,17 @@ class HomeModels {
     }
 
     async formatJSON(userId){
+        this._objectJSON = {"name": '', "todo":[]}
+
         await homeDao.generateListOfTodo(userId)
                     .then((rows)=> rows.forEach((row)=>{
-                        this._objectJSON.todo.push({"title": row.title, "description": row.description})
+                        this._objectJSON.todo.push({"title": row.title, "description": row.description, "important": row.important})
                     }))
                     .catch((err) => console.log(`Error in todo list generate : ${err}`));
         
 
         await homeDao.generateUserName(userId)
-                    .then((name)=> {this._objectJSON.name = `${name.first_name} ${name.last_name}`})
+                    .then((fullname)=> {this._objectJSON.name = `${fullname.first_name} ${fullname.last_name}`})
                     .catch((err) => console.log(`Error in name generate : ${err}`));
                         
         return this._objectJSON; 

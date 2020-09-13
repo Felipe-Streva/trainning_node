@@ -16,11 +16,14 @@ class HomeDao {
 
     generateListOfTodo(userId){
         return new Promise((resolve, reject)=>{
-            this._db.all(`SELECT title, description FROM Todo Where user_id = ?`, [userId], (err , rows)=>{
+            this._db.all(`SELECT title, description, Important.important important FROM Todo 
+            INNER JOIN Important ON Important.important_id = Todo.important_id
+            Where user_id = ?`, [userId], (err , rows)=>{
                 if (err) {
                     reject(err);
-                }
+                } 
                 resolve(rows)
+
             })
 
         })

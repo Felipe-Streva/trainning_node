@@ -12,6 +12,7 @@ function todoListToHTML(userCards){
         <div class="card-body">
           <h5 class="card-title">${userCards.todo[i].title}</h5>
           <p class="card-text">${userCards.todo[i].description}</p>
+          <h6 class="card-title">${userCards.todo[i].important}</h6>
         </div>
       </div>
         `
