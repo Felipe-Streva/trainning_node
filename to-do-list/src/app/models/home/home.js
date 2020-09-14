@@ -23,7 +23,8 @@ class HomeModels {
         
 
         await homeDao.generateUserName(userId)
-                    .then((fullname)=> {this._objectJSON.name = `${fullname.first_name} ${fullname.last_name}`})
+                    .then((rows)=> rows.forEach((row)=>{
+                        this._objectJSON.name = `${row.first_name} ${row.last_name}`}))
                     .catch((err) => console.log(`Error in name generate : ${err}`));
                         
         return this._objectJSON; 

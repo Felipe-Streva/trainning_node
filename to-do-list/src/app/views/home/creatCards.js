@@ -14,6 +14,10 @@ function todoListToHTML(userCards){
           <p class="card-text">${userCards.todo[i].description}</p>
           <h6 class="card-title">${userCards.todo[i].important}</h6>
         </div>
+        <div class="m-3 d-flex justify-content-end">
+          <button type="button" class="btn btn-secondary btn-sm mr-1">Editar</button>
+          <button type="button" class="btn btn-secondary btn-sm">Arquivar</button>
+        </div>
       </div>
         `
     }
