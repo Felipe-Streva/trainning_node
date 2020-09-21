@@ -6,11 +6,6 @@ module.exports = (app) => {
 
     app.get(`/:id`, HomeController.generateHome())
 
+    app.delete('/todo/:todoId', HomeController.deleteTodo())
+
 }
-
-/* (req, resp) => {
-
-    const userId = req.params.id
-    
-    resp.send(generateHome(userId))
-} */

@@ -5,36 +5,33 @@ const HomeDao = require('../../../../database/DAO/home/todosDao')
 
 const homeDao = new HomeDao(db)
 
-
 class HomeModels {
-    
-    constructor(){
-        this._objectJSON = {"name": '', "todo":[]}
-    }
 
     async formatJSON(userId){
         this._objectJSON = {"name": '', "todo":[]}
 
-        await homeDao.generateListOfTodo(userId)
-                    .then((rows)=> rows.forEach((row)=>{
-                        this._objectJSON.todo.push({"title": row.title, "description": row.description, "important": row.important})
-                    }))
-                    .catch((err) => console.log(`Error in todo list generate : ${err}`));
-        
+        await this.insertTodoList(userId, this)
 
         await homeDao.generateUserName(userId)
                     .then((rows)=> rows.forEach((row)=>{
                         this._objectJSON.name = `${row.first_name} ${row.last_name}`}))
                     .catch((err) => console.log(`Error in name generate : ${err}`));
-                        
+                    
         return this._objectJSON; 
         
     }
 
-
-        
-
-
+    insertTodoList(userId, thiss){
+        homeDao.generateListOfTodo(userId)
+                    .then((rows)=> rows.forEach((row)=>{
+                        thiss._objectJSON.todo.push({"todo_id": row.todo_id, "title": row.title, "description": row.description, "important": row.important})
+                    }))
+                    .catch((err) => console.log(`Error in todo list generate : ${err}`));
+    }
+    
+    deleteTodoInDB(todoId){
+        return homeDao.deleteTodo(todoId)
+    }
 
 }
 

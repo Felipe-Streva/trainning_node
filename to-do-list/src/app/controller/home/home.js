@@ -12,6 +12,15 @@ class HomeController {
                 resp.send(todoListToHTML(userCard))
         }))
     }
+
+    static deleteTodo(){
+        return ((req, resp) => {
+            homeModels.deleteTodoInDB(req.params.todoId)
+                .then(msg => console.log(msg))
+                .catch(err => console.log(err))
+
+        })
+    }
 }
 
 

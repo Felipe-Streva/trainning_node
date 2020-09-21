@@ -1,3 +1,5 @@
+const db = require("../../bd");
+
 class HomeDao {
     constructor(db){
         this._db = db;
@@ -16,7 +18,7 @@ class HomeDao {
 
     generateListOfTodo(userId){
         return new Promise((resolve, reject)=>{
-            this._db.all(`SELECT title, description, Important.important important FROM Todo 
+            this._db.all(`SELECT todo_id, title, description, Important.important important FROM Todo 
             INNER JOIN Important ON Important.important_id = Todo.important_id
             Where user_id = ?`, [userId], (err , rows)=>{
                 if(err) {
@@ -25,6 +27,15 @@ class HomeDao {
                 resolve(rows)
             })
 
+        })
+    }
+
+    deleteTodo(todoId){
+        return new Promise((resolve, reject) =>{
+            this._db.run(`Delete FROM Todo WHERE todo_id = ?`, [todoId], err => {
+                if(err) reject(err)
+                resolve(`Todo deleted`)
+            })
         })
     }
 }

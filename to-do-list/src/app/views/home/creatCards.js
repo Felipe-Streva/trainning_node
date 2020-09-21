@@ -8,7 +8,7 @@ function todoListToHTML(userCards){
 
     for(let i = 0; i<userCards.todo.length ; i++){
         list += 
-        `<div class="card mt-1" style="width: 18rem;">
+        `<div class="card mt-1" id="card${userCards.todo[i].todo_id}" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${userCards.todo[i].title}</h5>
           <p class="card-text">${userCards.todo[i].description}</p>
@@ -16,7 +16,7 @@ function todoListToHTML(userCards){
         </div>
         <div class="m-3 d-flex justify-content-end">
           <button type="button" class="btn btn-secondary btn-sm mr-1">Editar</button>
-          <button type="button" class="btn btn-secondary btn-sm">Arquivar</button>
+          <button type="button" class="btn btn-secondary btn-sm" onClick="deleteTodo(${userCards.todo[i].todo_id})">Arquivar</button>
         </div>
       </div>
         `

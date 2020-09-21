@@ -11,11 +11,11 @@ const db = new sqlite3.Database('./database/todo.db')
 }) */
 
 //insert Todo
-/*db.serialize(()=>{
+db.serialize(()=>{
     const statement = db.prepare("INSERT into `Todo` (user_id, title, description, `type`, important_id, status_id) Values (?, ?, ?, ?, ?, ?)");
     statement.run(2, 'Relaxar', 'Beber uma cerveja', 1, 3, 1)
     statement.finalize()
-})  */
+})  
 
 //INSERT status
 /* db.serialize(()=>{
@@ -30,6 +30,14 @@ const db = new sqlite3.Database('./database/todo.db')
     statement.run('Very Important')
     statement.finalize()
 }) */
+
+/*db.serialize(()=>{
+    db.all('Select * from important', (err,rows)=>{
+        rows.forEach(row=>{
+            console.log(row)
+        })
+    })
+})*/
 
 
 db.close();
