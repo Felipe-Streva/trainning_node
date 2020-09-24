@@ -32,10 +32,30 @@ class HomeDao {
 
     deleteTodo(todoId){
         return new Promise((resolve, reject) =>{
-            this._db.run(`Delete FROM Todo WHERE todo_id = ?`, [todoId], err => {
+            this._db.run(`Delete FROM Todo WHERE todo_id = ?`, [todoId], function(err){
                 if(err) reject(err)
-                resolve(`Todo deleted`)
+                resolve(this)
             })
+        })
+    }
+
+    addToto(body, id){
+        return new Promise((resolve, reject) => {
+            this._db.run("INSERT into `Todo` (user_id, title, description, `type`, important_id, status_id) Values (?, ?, ?, ?, ?, ?)" ,
+                [id, body.title, body.description, body.type, body.important_id, body.status_id], err => {
+                    if(err) reject(err)
+                    resolve(`Todo add`)
+                })
+        })
+    }
+
+    changeToto(body, id){
+        return new Promise((resolve, reject) => {
+            this._db.run("Update `Todo` SET title = ?, description = ?, important_id = ? where todo_id = ?" ,
+                [body.title, body.description, body.important_id, id], function(err){
+                    if(err) reject(err)
+                    resolve(`Todo changed`)
+                })
         })
     }
 }

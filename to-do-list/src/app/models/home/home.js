@@ -33,6 +33,15 @@ class HomeModels {
         return homeDao.deleteTodo(todoId)
     }
 
+    addTodoInDB(body, id){
+        return homeDao.addToto(body, id)
+    }
+
+    changeTodoInDB(body, id){
+        return homeDao.changeToto(body, id)
+    }
+
+
 }
 
 module.exports = HomeModels;

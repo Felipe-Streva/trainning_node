@@ -1,11 +1,34 @@
-function deleteElement(id, idFather){
-    let element = document.getElementById(`${id}`);
-    idFather.removeChild(element)
+function deleteTodo(event){
+    const elementToDelete = event.target.parentNode.parentNode
+    const id = elementToDelete.dataset.id
+
+    fetch(`http://localhost:3000/todo/${id}`, {method: 'DELETE'})
+        .then((response)=>{
+            if(response.ok) return response.json()
+        })
+        .then((informationRunDB) => {
+            if(informationRunDB.changes!=0) deleteCard(elementToDelete)
+            else $('#notDeleteModal').modal()       
+        })
+        .catch(() => {
+             $('#notDeleteModal').modal()
+        })
+
 }
 
-function deleteTodo(id){
-    fetch(`http://localhost:3000/todo/${id}`, {method: 'DELETE'})
+function deleteCard(elementToDelete){
+    elementToDelete.remove()
+    $('#deleteModal').modal()
+}
 
-    let father = document.querySelector('#todoCard')
-    deleteElement(`card${id}`, father)
+function formatTodo(event){
+    const elementToFormat = event.target.parentNode.parentNode
+    const todoId = elementToFormat.dataset.id
+    const idTodo = document.querySelector('#idTodo')
+    idTodo.value = todoId
+    const form = document.querySelector('#form')
+    const userId = elementToFormat.parentNode.dataset.userId
+    form.action = `/${userId}/todo/${todoId}`
+    const tituloTarefa = document.querySelector('#tituloTarefa')
+    tituloTarefa.focus()
 }

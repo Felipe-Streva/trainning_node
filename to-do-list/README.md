@@ -6,7 +6,7 @@
 >1.  express
 >2.  sqlite3
 >3.  body-parser
->4.  cors
+>4.  method-override
 
 ## node packages dev used ##
 >1.  nodemon
@@ -19,7 +19,7 @@ npm init
 npm install express
 npm install sqlite3
 npm install body-parser
-npm install cors
+npm install method-override
 
 # execute code
 node ./src/server.js

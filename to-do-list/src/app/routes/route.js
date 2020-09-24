@@ -8,4 +8,8 @@ module.exports = (app) => {
 
     app.delete('/todo/:todoId', HomeController.deleteTodo())
 
+    app.post(`/:id`, HomeController.addTodo())
+
+    app.put(`/:id/todo/:todoId`, HomeController.changeTodo())
+
 }
