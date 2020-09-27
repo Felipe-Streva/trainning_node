@@ -1,4 +1,3 @@
-const db = require("../../bd");
 
 class HomeDao {
     constructor(db){

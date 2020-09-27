@@ -1,4 +1,3 @@
-const sqlite3 = require('sqlite3').verbose()
 const db = require('../../../../database/bd')
 
 const HomeDao = require('../../../../database/DAO/home/todosDao')

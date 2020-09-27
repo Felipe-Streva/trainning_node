@@ -1,11 +1,13 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
+app.use(cors())
 
 app.use(methodOverride(function (req, res) {
     if (req.body && typeof req.body === 'object' && '_method' in req.body && req.body.idTodo != 'null') {

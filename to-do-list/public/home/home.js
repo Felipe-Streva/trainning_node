@@ -2,7 +2,7 @@ function deleteTodo(event){
     const elementToDelete = event.target.parentNode.parentNode
     const id = elementToDelete.dataset.id
 
-    fetch(`http://localhost:3000/todo/${id}`, {method: 'DELETE'})
+    fetch(`/todo/${id}`, {method: 'DELETE'})
         .then((response)=>{
             if(response.ok) return response.json()
         })
